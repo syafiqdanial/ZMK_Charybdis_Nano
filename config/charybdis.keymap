@@ -41,11 +41,6 @@
             key-positions = <14 15>;
         };
 
-        scroll {
-            bindings = <&mo 4>;
-            key-positions = <16 17 18>;
-        };
-
         MCLK {
             bindings = <&mkp MCLK>;
             key-positions = <16 18>;

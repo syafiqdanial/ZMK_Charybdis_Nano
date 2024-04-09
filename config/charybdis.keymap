@@ -89,15 +89,25 @@
         };
     };
 
+    macros {
+        quicker: quicker {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_CONTROL &kp LCTRL>, <&macro_press>;
+
+            label = "QUICKER";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        COLEMAK {
+        QWER {
             bindings = <
-  &kp Q             &kp W               &kp F           &kp P           &kp B        &kp J            &kp L                           &kp U      &kp Y    &kp APOS
-  &mt LEFT_SHIFT A  &mt LEFT_CONTROL R  &mt LEFT_ALT S  &mt LEFT_GUI T  &kp G        &kp M            &kp N                           &kp E      &kp I    &kp O
-  &kp Z             &kp X               &kp C           &kp D           &kp V        &kp K            &kp H                           &kp COMMA  &kp DOT  &kp SLASH
-                                        &mo 4           &kp SPACE       &lt 1 TAB    &lt 2 BACKSPACE  &Shift_Enter RIGHT_SHIFT ENTER
+  &kp Q           &kp W           &kp E        &kp R             &kp T        &kp Y      &kp U              &kp I        &kp O            &kp P
+  &mt LEFT_WIN A  &mt LEFT_ALT S  &mt LCTRL D  &mt LEFT_SHIFT F  &kp G        &kp H      &mt RIGHT_SHIFT J  &mt RCTRL K  &mt RIGHT_ALT L  &mt RIGHT_WIN SQT
+  &lt 6 Z         &kp X           &kp C        &kp V             &kp B        &kp N      &kp M              &kp COMMA    &kp DOT          &kp SLASH
+                                  &kp ESC      &lt 2 SPACE       &lt 1 TAB    &kp ENTER  &lt 5 BACKSPACE
             >;
         };
 
@@ -110,12 +120,12 @@
             >;
         };
 
-        SYMNUM {
+        NUM {
             bindings = <
-  &kp GRAVE  &kp EXCL   &kp AT       &kp POUND       &kp DOLLAR    &kp EQUAL  &kp N1  &kp N2  &kp N3  &kp SEMI
-  &kp TILDE  &kp STAR   &kp PIPE     &kp UNDER       &kp MINUS     &kp N0     &kp N4  &kp N5  &kp N6  &kp COLON
-  &trans     &kp CARET  &kp PERCENT  &kp AMPERSAND   &trans        &trans     &kp N7  &kp N8  &kp N9  &trans
-                        &trans       &kp LEFT_SHIFT  &lt 3 TAB     &trans     &trans
+  &kp N1    &kp N2          &kp N3        &kp N4          &kp N5       &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
+  &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT       &quicker     &none   &trans  &trans  &trans  &trans
+  &none     &none           &none         &none           &none        &none   &none   &none   &none   &none
+                            &trans        &kp LEFT_SHIFT  &lt 3 TAB    &trans  &trans
             >;
         };
 
@@ -134,6 +144,24 @@
   &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
   &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
                   &trans  &trans  &trans    &trans  &trans
+            >;
+        };
+
+        SYM {
+            bindings = <
+  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT    &kp CARET  &kp AMPERSAND   &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
+  &trans           &trans       &trans    &trans      &none          &none      &kp MINUS       &kp EQUAL     &kp SEMICOLON         &kp BACKSLASH
+  &none            &none        &none     &none       &none          &none      &kp UNDERSCORE  &kp PLUS      &kp LEFT_BRACKET      &kp RIGHT_BRACKET
+                                &trans    &trans      &trans         &trans     &trans
+            >;
+        };
+
+        Mouse {
+            bindings = <
+  &trans  &trans  &trans     &trans     &trans       &trans  &trans  &trans  &trans  &trans
+  &trans  &trans  &trans     &trans     &trans       &trans  &trans  &trans  &trans  &trans
+  &trans  &mo 4   &trans     &trans     &trans       &trans  &trans  &trans  &trans  &trans
+                  &mkp RCLK  &mkp LCLK  &mkp MCLK    &trans  &trans
             >;
         };
     };

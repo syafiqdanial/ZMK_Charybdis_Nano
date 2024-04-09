@@ -36,41 +36,6 @@
             key-positions = <17 18>;
         };
 
-        ParaLeft {
-            bindings = <&kp LEFT_PARENTHESIS>;
-            key-positions = <3 13>;
-        };
-
-        ParaRight {
-            bindings = <&kp RIGHT_PARENTHESIS>;
-            key-positions = <6 16>;
-        };
-
-        BrakLeft {
-            bindings = <&kp LEFT_BRACKET>;
-            key-positions = <2 12>;
-        };
-
-        BrakRight {
-            bindings = <&kp RIGHT_BRACKET>;
-            key-positions = <7 17>;
-        };
-
-        BraceLeft {
-            bindings = <&kp LEFT_BRACE>;
-            key-positions = <1 11>;
-        };
-
-        BraceRight {
-            bindings = <&kp RIGHT_BRACE>;
-            key-positions = <8 18>;
-        };
-
-        Delete {
-            bindings = <&kp DELETE>;
-            key-positions = <7 8>;
-        };
-
         CapsWord {
             bindings = <&caps_word>;
             key-positions = <14 15>;

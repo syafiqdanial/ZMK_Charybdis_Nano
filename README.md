@@ -1,11 +1,11 @@
 # Charybdis - ZMK - Config
 
 
-|![DSC09695](https://github.com/superxc3/Charybdis-ZMK-Config/assets/79617315/1af92c33-c02e-496c-ab6b-5bc7406547a4)|
+|![DSC09695](https://github.com/superxc3/zmk-config-charybdis_nano/assets/79617315/9ba9cfbd-cc29-4678-83e3-f499a401b5f7)|
 |:--:|
-|For charybdis nano 3x5, please fork [grassfedreeve](https://github.com/grassfedreeve/Charybdis-ZMK-Config).|
+|For charybdis nano 3x5, please fork current github.|
 
-|![image](https://github.com/superxc3/Charybdis-ZMK-Config/assets/79617315/79475fe7-5b9e-49ce-91a5-267933117073)|
+|![image](https://github.com/superxc3/zmk-config-charybdis_nano/assets/79617315/7f779181-ec1b-4e8d-8df7-b08ec5603b7d)|
 |:--:|
 |You may use nickcoutsos's [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) to edit ZMK keymaps using browser. |
 

@@ -22,6 +22,14 @@
 
 <br>
 
+## Bluetooth connection
+
+|![image](https://github.com/superxc3/zmk-config-charybdis_nano/assets/79617315/7870e72e-da36-47e3-9f45-4b0f3f01050d)|
+|:--|
+| Default bluetooth connection |
+
+<br>
+
 ## Side note
 1. This is built based on [grassfedreeve](https://github.com/grassfedreeve/Charybdis-ZMK-Config).
 2. [Tangbonze](https://github.com/tangbonze/zmk-config-charybdis_nano) has updated with certain features.

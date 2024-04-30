@@ -54,16 +54,6 @@
         };
     };
 
-    macros {
-        quicker: quicker {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_CONTROL &kp LCTRL>, <&macro_press>;
-
-            label = "QUICKER";
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 

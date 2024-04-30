@@ -5,7 +5,7 @@
 |:--:|
 |For charybdis nano 3x5, please fork current github.|
 
-|![image](https://github.com/superxc3/zmk-config-charybdis_nano/assets/79617315/7f779181-ec1b-4e8d-8df7-b08ec5603b7d)|
+|![image](https://github.com/superxc3/zmk-config-charybdis_nano/assets/79617315/195317a1-7967-4902-bd9f-acc870a274aa)|
 |:--:|
 |You may use nickcoutsos's [Keymap Editor](https://nickcoutsos.github.io/keymap-editor/) to edit ZMK keymaps using browser. |
 

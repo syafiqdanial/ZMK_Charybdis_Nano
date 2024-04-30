@@ -24,5 +24,5 @@
 
 ## Side note
 1. This is built based on [grassfedreeve](https://github.com/grassfedreeve/Charybdis-ZMK-Config).
-2. [Tangbonze](https://github.com/tangbonze/zmk-config-charybdis_nano) has configured to fit for the pmw3610 driver, scroll and snipe function.
+2. [Tangbonze](https://github.com/tangbonze/zmk-config-charybdis_nano) has updated with certain features.
 3. I have reduced unnecessary layer and revised the default scroll and snipe layers. 

@@ -26,7 +26,7 @@
 
 |![image](https://github.com/superxc3/zmk-config-charybdis_nano/assets/79617315/7870e72e-da36-47e3-9f45-4b0f3f01050d)|
 |:--|
-| Default bluetooth connection |
+| Default bluetooth connection: hold left thumb, then hold right thumb, you may release left thumb. tap bt0/bt clear etc for configuration. |
 
 <br>
 

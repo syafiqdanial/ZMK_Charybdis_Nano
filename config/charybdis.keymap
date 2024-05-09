@@ -98,9 +98,9 @@
         QWERT {
             bindings = <
   &kp Q       &kp W       &kp E        &kp R        &kp T             &kp Y        &kp U        &kp I        &kp O       &kp P
-  &mt LGUI A  &mt LALF S  &mt LCTRL D  &mt LSHFT F  &kp G             &kp H        &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt SEMI SQT
+  &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LSHFT F  &kp G             &kp H        &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt SEMI SQT
   &lt 5 Z     &kp X       &kp C        &kp V        &kp B             &kp N        &kp M        &kp COMMA    &kp DOT     &mt BSLH FSLH
-                          &mt 6 ESC    &lt 1 SPACE  &lt 2 TAB         &lt 4 ENTER  &mt RSHFT BSPC
+                          &mt 6 ESC    &lt 1 SPACE  &lt 2 TAB         &lt 3 ENTER  &mt RSHFT BSPC
             >;
         };
 

@@ -40,6 +40,11 @@
             bindings = <&mo 5>;
             key-positions = <16 17 18>;
         };
+        layer3 {
+            timeout-ms = <50>;
+            key-positions = <38 39>;
+            bindings = <&mo 3>;
+       };
     };
 
     behaviors {
@@ -62,6 +67,29 @@
 
             label = "QUICKER";
         };
+         roundbkt: round_brackets {
+            label= "round_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR>;
+         };
+         
+         squarebkt: square_brackets {
+            label= "square_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBKT &kp RBKT>;
+         };
+         
+         curlbkt: curl_brackets {
+            label= "curl_brackets";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBRC &kp RBRC>;
+         };
     };
 
     keymap {
@@ -69,46 +97,46 @@
 
         QWERT {
             bindings = <
-  &kp Q           &kp W           &kp E        &kp R             &kp T        &kp Y      &kp U              &kp I        &kp O            &kp P
-  &mt LEFT_WIN A  &mt LEFT_ALT S  &mt LCTRL D  &mt LEFT_SHIFT F  &kp G        &kp H      &mt RIGHT_SHIFT J  &mt RCTRL K  &mt RIGHT_ALT L  &mt RIGHT_WIN SQT
-  &lt 5 Z         &kp X           &kp C        &kp V             &kp B        &kp N      &kp M              &kp COMMA    &kp DOT          &kp SLASH
-                                  &mo 6        &lt 2 SPACE       &lt 1 TAB    &kp ENTER  &lt 4 BACKSPACE
+  &kp Q       &kp W       &kp E        &kp R        &kp T             &kp Y        &kp U        &kp I        &kp O       &kp P
+  &mt LGUI A  &mt LALF S  &mt LCTRL D  &mt LSHFT F  &kp G             &kp H        &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt SEMI SQT
+  &lt 5 Z     &kp X       &kp C        &kp V        &kp B             &kp N        &kp M        &kp COMMA    &kp DOT     &mt BSLH FSLH
+                          &mt 6 ESC    &lt 1 SPACE  &lt 2 TAB         &lt 4 ENTER  &mt RSHFT BSPC
             >;
         };
 
-        NAV {
+        NUMNAV {
             bindings = <
-  &kp LA(F4)  &kp LG(UP_ARROW)  &kp LG(LEFT)     &kp LG(RIGHT)        &kp LC(W)    &kp PRINTSCREEN  &kp BACKSPACE     &kp ENTER          &kp DELETE    &trans
-  &kp LC(Z)   &kp RC(RS(T))     &kp LS(LC(TAB))  &kp LC(TAB)          &kp LC(A)    &kp ENTER        &kp LEFT          &kp DOWN           &kp UP_ARROW  &kp RIGHT
-  &kp LC(Z)   &kp LC(X)         &kp LC(C)        &mt LC(LS(V)) LC(V)  &kp LC(Y)    &trans           &kp LC(LS(LEFT))  &kp LS(LC(RIGHT))  &trans        &trans
-                                &trans           &trans               &trans       &lt 3 BACKSPACE  &kp LSHFT
+  &kp KP_PLUS     &kp N1     &kp N2     &kp N3     &kp LPAR              &kp RPAR     &kp HOME  &kp UP   &kp END   &kp PG_UP
+  &kp KP_MINUS    &kp N4     &kp N5     &kp N6     &kp N0                &kp EQUAL    &kp LEFT  &kp DOWN &kp RIGHT &kp PG_DN
+  &kp KP_MULTIPLY &kp N7     &kp N8     &KP N9     &kp DOT               &none        &kp CAPS  &none    &none     &none
+                             &none      &none      &none                 &mt DEL BSPC &kp ENTER
             >;
         };
 
-        NUM {
+        SYMFUN {
             bindings = <
-  &kp N1    &kp N2          &kp N3        &kp N4          &kp N5       &kp N6  &kp N7  &kp N8  &kp N9  &kp N0
-  &kp LEFT  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT       &quicker     &none   &trans  &trans  &trans  &trans
-  &none     &none           &none         &none           &none        &none   &none   &none   &none   &none
-                            &trans        &kp LEFT_SHIFT  &lt 3 TAB    &trans  &trans
+  &roundbkt  &suarebkt  &curlbkt       &kp GRAVE      &kp TILDE             &kp CARET  &kp F1  &kp F2   &kp F3   &kp F4
+  &kp EXCL   &kp AT     &kp HASH       &kp DOLLAR     &kp PIPE              &none      &kp F5  &kp F6   &kp F7   &kp F8
+  &kp PRCNT  &kp CARET  &kp AMPERSAND  &kp BACKSLASH  &kp UNDERSCORE        &none      &kp F9  &kp F10  &kp F11  &kp F12
+                        &none          &none          &none                 &none      &none
             >;
         };
 
         FUN {
             bindings = <
-  &kp ESC  &kp F1  &kp F2  &kp F3  &kp F10    &bt BT_SEL 0  &bt BT_SEL 1      &bt BT_SEL 2       &bt BT_SEL 3     &bt BT_SEL 4
-  &kp F12  &kp F4  &kp F5  &kp F6  &kp F11    &out OUT_TOG  &kp K_PLAY_PAUSE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &bt BT_CLR
-  &trans   &kp F7  &kp F8  &kp F9  &kp F12    &trans        &trans            &trans             &trans           &trans
-                   &trans  &trans  &trans     &trans        &trans
+  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4          &none        &none         &none         &bt BT_CLR    &none
+  &none         &none         &none         &none         &none                 &none        &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP
+  &none         &none         &none         &none         &bootloader           &bootloader  &none         &none         &none         &none
+                              &sys_reset    &none         &none                 &none        &none
             >;
         };
 
-        SYM {
+        FOUR {
             bindings = <
-  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT    &kp CARET  &kp AMPERSAND   &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-  &trans           &trans       &trans    &trans      &none          &none      &kp MINUS       &kp EQUAL     &kp SEMICOLON         &kp BACKSLASH
-  &none            &none        &none     &none       &none          &none      &kp UNDERSCORE  &kp PLUS      &kp LEFT_BRACKET      &kp RIGHT_BRACKET
-                                &trans    &trans      &trans         &trans     &trans
+  &none  &none  &none  &none  &none       &none  &none  &none  &none  &none
+  &none  &none  &none  &none  &none       &none  &none  &none  &none  &none
+  &none  &none  &none  &none  &none       &none  &none  &none  &none  &none
+                &none  &none  &none       &none  &none
             >;
         };
 

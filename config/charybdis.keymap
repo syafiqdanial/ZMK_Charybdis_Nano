@@ -115,7 +115,7 @@
   &kp EXCL   &kp AT     &kp HASH       &kp DOLLAR     &kp PIPE              &none      &kp F5  &kp F6   &kp F7   &kp F8
   &kp PRCNT  &kp CARET  &kp AMPERSAND  &kp BACKSLASH  &kp UNDERSCORE        &none      &kp F9  &kp F10  &kp F11  &kp F12
                         &none          &none          &none                 &kp DEL    &kp BSPC
-            >;,
+            >;
         };
 
         BLU {

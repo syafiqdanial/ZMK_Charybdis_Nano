@@ -85,7 +85,7 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LBRC &kp RBRC>;
-         };,
+         };
     };
 
     keymap {

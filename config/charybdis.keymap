@@ -5,165 +5,66 @@
 #include <dt-bindings/zmk/mouse.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define HM_TAPPING_TERM 180
-#define HM_TAPPING_TERM_FAST 150 
-#define HM_PRIOR_IDLE 120
-
-#define COMBO_TERM_FAST 35
-#define COMBO_TERM_SLOW 40
-#define COMBO_PRIOR_IDLE 80
-
-#define BASE 0
-#define NUMS 1
-#define SYM 2
-#define BLU 3
-#define SCROLL 4
-#define SNIPE 5
-#define AUTO 6
-
-#define KEYS_L LT0 LT1 LT2 LT3 LT4 LM0 LM1 LM2 LM3 LM4 LB0 LB1 LB2 LB3 LB4  // left-hand keys
-#define KEYS_R RT0 RT1 RT2 RT3 RT4 RM0 RM1 RM2 RM3 RM4 RB0 RB1 RB2 RB3 RB4  // right-hand keys
-#define KEYS_T                 LH1 LH0 RH0 RH1                              // thumb keys
-
 &lt {
-    tapping-term-ms = <175>;
+    tapping-term-ms = <240>;
+    flavor = "tap-preferred";
+    quick-tap-ms = <150>;
+    require-prior-idle-ms = <10>;
+};
+
+&mt { 
+    tapping-term-ms = <150>;
+    flavor = "tap-preferred";
+    require-prior-idle-ms = <10>;
+};
+
+/ {
+    chosen { zmk,matrix_transform = &five_column_transform; };
 };
 
 / {
     combos {
         compatible = "zmk,combos";
 
-        //INFO: Mouse clicks - left hand
-        combo_mouse_left_click_l {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+        LeftClickRight {
+            timeout-ms = <100>;
             bindings = <&mkp LCLK>;
-            key-positions = <11 12>;
+            key-positions = <26 27>;
         };
 
-        combo_mouse_right_click_l {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
+        RightClickRight {
+            timeout-ms = <100>;
             bindings = <&mkp RCLK>;
-            key-positions = <12 13>;
+            key-positions = <27 28>;
         };
 
-        combo_mouse_middle_click_l {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mkp MCLK>;
-            key-positions = <11 12 13>;
-        };
-
-        //INFO: Mouse clicks - right hand
-        combo_mouse_left_click_r {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mkp LCLK>;
-            key-positions = <16 17>;  
-        };
-
-        combo_mouse_right_click_r {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mkp RCLK>;
-            key-positions = <17 18>;
-        };
-
-        combo_mouse_middle_click_r {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mkp MCLK>;
-            key-positions = <16 17 18>;
-        };
-
-        //INFO: Layer activation
-        combo_layer_blu_l {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 4>;
+        layer3 {
+            timeout-ms = <50>;
             key-positions = <38 39>;
-        };
-
-        combo_layer_blu_r {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
             bindings = <&mo 3>;
-            key-positions = <21 22 23>;
-        };
-
-        combo_layer_scroll_l {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 4>;
-            key-positions = <21 22 23>;
-        };
-
-        combo_layer_snipe_l {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 5>;
-            key-positions = <20 21 22>;
-        };
-
-        combo_layer_scroll_r {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 4>;
-            key-positions = <26 27 28>;
-        };
-
-        combo_layer_snipe_r {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 5>;
-            key-positions = <27 28 29>;
-        };
-
-        combo_layer_auto {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 5>;
-            key-positions = <3 4>;
-        };
-
-        combo_layer_dan {
-            timeout-ms = <COMBO_TERM_FAST>;
-            require-prior-idle-ms = <COMBO_PRIOR_IDLE>;
-            bindings = <&mo 2>;
-            key-positions = <33 34>;
-        };
+       };
     };
 
     behaviors {
-        hm_l: homerow_mods_left {
+        Shift_Enter: Shift_Enter {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            label = "SHIFT_ENTER";
             bindings = <&kp>, <&kp>;
 
-            flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM>;
-            quick-tap-ms = <HM_TAPPING_TERM_FAST>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
-            hold-trigger-key-positions = <KEYS_R KEYS_T>;
-            hold-trigger-on-release;
-        };
-
-        hm_r: homerow_mods_right {
-            compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&kp>, <&kp>;
-
-            flavor = "balanced";
-            tapping-term-ms = <HM_TAPPING_TERM>;
-            quick-tap-ms = <HM_TAPPING_TERM_FAST>;
-            require-prior-idle-ms = <HM_PRIOR_IDLE>;
-            hold-trigger-key-positions = <KEYS_L KEYS_T>;
-            hold-trigger-on-release;
+            hold-trigger-key-positions = <34>;
+            tapping-term-ms = <100>;
         };
     };
 
     macros {
+        quicker: quicker {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_CONTROL &kp LCTRL>, <&macro_press>;
+
+            label = "QUICKER";
+        };
          roundbkt: round_brackets {
             label= "round_brackets";
             compatible = "zmk,behavior-macro";
@@ -189,25 +90,19 @@
          };
     };
 
-    chosen {
-      zmk,physical-layout = &charybdis_5col_layout;
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
-        BASE {
-            display-name = "BASE";
+        QWERT {
             bindings = <
-  &kp Q         &kp W         &kp E          &kp R          &kp T             &kp Y           &kp U          &kp I          &kp O         &kp P
-  &hm_l LGUI A  &hm_l LALT S  &hm_l LCTRL D  &hm_l LSHFT F  &kp G             &kp H           &hm_r RSHFT J  &hm_r RCTRL K  &hm_r RALT L  &hm_r SEMI SQT
-  &lt 4 Z       &lt 4 X       &kp C          &kp V          &kp B             &lt 2 N         &kp M          &kp COMMA      &lt 4 DOT     &mt BSLH FSLH
-                              &lt 2 TAB      &lt 1 SPACE    &lt 5 ESC         &lt 3 ENTER     &hm_r RSHFT BSPC
+  &kp Q       &kp W       &kp E        &kp R        &kp T             &kp Y           &kp U        &kp I        &kp O       &kp P
+  &mt LGUI A  &mt LALT S  &mt LCTRL D  &mt LSHFT F  &kp G             &kp H           &mt RSHFT J  &mt RCTRL K  &mt RALT L  &mt SEMI SQT
+  &lt 5 Z     &lt 4 X     &kp C        &lt 4 V      &kp B             &lt 2 N         &kp M        &kp COMMA    &lt 5 DOT   &mt BSLH FSLH
+                          &lt 2 TAB    &lt 1 SPACE  &lt 6 ESC         &lt 3 ENTER     &mt RSHFT BSPC
             >;
         };
 
-        NUMS {
-            display-name = "NUMS";
+        NUMNAV {
             bindings = <
   &kp KP_PLUS     &kp N1     &kp N2     &kp N3     &kp LPAR              &kp RPAR     &kp HOME  &kp UP   &kp END   &kp PG_UP
   &kp KP_MINUS    &kp N4     &kp N5     &kp N6     &kp N0                &kp EQUAL    &kp LEFT  &kp DOWN &kp RIGHT &kp PG_DN
@@ -216,8 +111,7 @@
             >;
         };
 
-        SYM {
-            display-name = "SYM";
+        SYMFUN {
             bindings = <
   &roundbkt  &squarebkt &curlbkt       &kp GRAVE      &kp TILDE             &kp CARET  &kp F1  &kp F2   &kp F3   &kp F4
   &kp EXCL   &kp AT     &kp HASH       &kp DOLLAR     &kp PIPE              &none      &kp F5  &kp F6   &kp F7   &kp F8
@@ -227,7 +121,6 @@
         };
 
         BLU {
-            display-name = "BLU";
             bindings = <
   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4          &none        &none         &none         &bt BT_CLR    &none
   &none         &none         &none         &none         &none                 &none        &kp C_VOL_DN  &kp C_VOL_UP  &kp C_BRI_DN  &kp C_BRI_UP
@@ -236,33 +129,30 @@
             >;
         };
 
+        FOUR {
+            bindings = <
+  &none     &none     &none      &none      &none       &none  &none      &none      &none      &none
+  &kp LGUI  &kp LALT  &kp LCTRL  &kp LSHFT  &none       &none  &mkp LCLK  &mo 5      &mkp RCLK  &none
+  &none     &none     &none      &none      &none       &none  &none      &none      &none     &none
+                      &none      &none      &none       &none  &none
+            >;
+        };
+
         SCROLL {
-            display-name = "SCROLL";
             bindings = <
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans    &trans    &trans  &trans
+  &none     &none     &none      &none      &none       &none  &none      &none      &none  &none
+  &none     &none     &none      &none      &none       &none  &none      &none      &none  &none
+  &none     &none     &none      &none      &none       &none  &none      &none      &none  &none
+                      &none      &none      &none       &none  &none
             >;
         };
 
-        SNIPE {
-            display-name = "SNIPE";
+        MSNIPE {
             bindings = <
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans          &trans           &trans          &trans
-                &trans  &trans  &trans  &trans    &trans    &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &msc SCRL_DOWN  &msc SCRL_UP
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans          &trans           &trans          &trans
-                                &trans  &trans    &trans    &trans  &trans
-            >;
-        };
-
-        AUTO {
-            display-name = "AUTO";
-            bindings = <
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans    &trans    &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans    &trans    &trans  &trans
+  &trans  &trans  &trans     &trans     &trans       &trans  &trans          &msc SCRL_UP    &trans  &trans
+  &trans  &trans  &trans     &trans     &trans       &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans
+  &trans  &trans  &trans     &trans     &trans       &trans  &trans  &trans  &trans  &trans
+                  &mkp RCLK  &mkp LCLK  &mkp MCLK    &trans  &trans
             >;
         };
     };
